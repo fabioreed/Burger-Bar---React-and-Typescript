@@ -14,8 +14,7 @@ export const formSchema = yup.object({
     passwordConfirmation: yup
       .string()
       .required('Confirmação de senha é obrigatória')
-      .oneOf(
-        [yup.ref("password")],
+      .oneOf([yup.ref("password")],
         "Confirmação de senha deve ser igual a senha"
-      )
+    )
 })

@@ -10,6 +10,33 @@ export const UserProvider = ({ children }: IDefaultProviderProps) => {
   const navigate = useNavigate()
   const [user, setUser] = useState<IUser | null>(null)
 
+  useEffect(() => {
+    const token = localStorage.getItem('@userToken')
+    const id = localStorage.getItem('@userID')
+    
+    if (token) {
+      const getUser = async () => {
+          try {
+            const res = await api.get(`/users/${id}`, {
+              headers: {
+                Authorization: `Bearer ${token}`
+              }
+            })
+      
+            setUser(res.data)
+  
+            navigate('/shop')
+  
+          } catch (error) {
+            console.log(error)
+            setUser(null)
+            localStorage.clear()
+          }
+      }
+      getUser()
+    }
+  }, [])
+
   const userRegister = async (formData: IRegisterFormValues) => {
     try {
       const res = await api.post('/users', formData)

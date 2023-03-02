@@ -10,14 +10,6 @@ import { useNavigate } from 'react-router-dom'
 const LoginPage = () => {
   const navigate = useNavigate()
 
-  useEffect(() => {
-    const token = localStorage.getItem('@userToken')
-
-    if (token) {
-      navigate('/shop')
-    }
-  }, [])
-
   return (
   <StyledLoginPage>
     <StyledContainer>

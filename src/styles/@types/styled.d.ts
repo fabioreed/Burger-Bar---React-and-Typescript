@@ -1,10 +1,10 @@
-import 'styled-components';
+import 'styled-components'
 
 declare module 'styled-components' {
   export interface DefaultTheme {
     fonts: {
       primary: string;
-    };
+    }
     colors: {
       primary: string;
       secondary: string;
@@ -19,7 +19,7 @@ declare module 'styled-components' {
         warning: string;
         sucess: string;
         information: string;
-      };
-    };
+      }
+    }
   }
 }

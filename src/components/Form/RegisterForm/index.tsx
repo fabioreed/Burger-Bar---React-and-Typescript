@@ -23,7 +23,7 @@ const RegisterForm = () => {
       <Input label='Seu nome' type='text' register={register('name')} error={errors.name} />
       <Input label ='Digite um email' type='email' register={register('email')} error={errors.email} />
       <Input label='Crie uma senha' type='password' register={register('password')} error={errors.password} />
-      <Input label='Confirme sua senha' type='password' register={register('passwordConfirmation')} error={errors.password} />
+      <Input label='Confirme sua senha' type='password' register={register('passwordConfirmation')} error={errors.passwordConfirmation} />
       <StyledButton type='submit' $buttonSize='default' $buttonStyle='gray'>
         Cadastrar
       </StyledButton>

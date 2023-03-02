@@ -13,27 +13,30 @@ const ShopPage = () => {
   const { setProd, modal } = useContext(CartContext)
 
   useEffect(() => {
-    const getProducts = async () => {
-      try {
-        const token = localStorage.getItem('@userToken')
-        
-        const res = await api.get('/products', {
-          headers: {
-            Authorization: `Bearer ${token}`
-          }
-        })
-  
-        setProd(res.data)
-  
-      } catch (error) {
-        console.log(error)
+    const token = localStorage.getItem('@userToken')
+    if (token) {
+      const getProducts = async () => {
+        try {
+          const res = await api.get('/products', {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          })
+    
+          setProd(res.data)
 
-        navigate('/')
-
-        localStorage.clear()
+          navigate('/shop')
+    
+        } catch (error) {
+          console.log(error)
+  
+          navigate('/')
+  
+          localStorage.clear()
+        }
       }
+      getProducts()
     }
-    getProducts()
   }, [])
 
     return (
